@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% extends 'base.html' %}
+    {% block content %}
+    {% block page_header %}
+    <h1>Topics</h1>
+    {% endblock page_header %}
+    <ul>
+        {% for topic in topics %}
+            <li><h3>
+                <a href="{% url 'studynote:topic' topic.id %}">{{ topic }}</a>
+            </h3></li>
+        {% empty %}
+            <li><h3>no topics have been added yet.</h3></li>
+        {% endfor %}
+    </ul>
+    <h3><a href="{% url 'studynote:new_topic' %}">Add a new topic</a></h3>
+    {% endblock content %}
+</body>
+</html>
